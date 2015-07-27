@@ -1,0 +1,9 @@
+/node_modules/*
+.idea/
+.idea/vcs.xml
+
+.idea/scopes/scope_settings.xml
+
+.idea/mock-the-mocking.iml
+
+.idea/encodings.xml
