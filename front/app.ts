@@ -6,7 +6,7 @@ import {Component, View, bootstrap} from 'angular2/angular2';
     selector: 'my-app'
 })
 @View({
-    template: '<h1>Hello {{ word }}!!</h1>'
+    template: 'Hello <input type="text" value="{{ word }}" (keyup)="myControllerMethod()" >!!'
 })
 // Component controller
 class MyAppComponent {
@@ -14,6 +14,9 @@ class MyAppComponent {
 
     constructor() {
         this.word = 'there';
+    }
+    myControllerMethod() {
+        console.log(this.word);
     }
 }
 bootstrap(MyAppComponent);

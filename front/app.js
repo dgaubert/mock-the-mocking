@@ -16,12 +16,15 @@ var MyAppComponent = (function () {
     function MyAppComponent() {
         this.word = 'there';
     }
+    MyAppComponent.prototype.myControllerMethod = function () {
+        console.log(this.word);
+    };
     MyAppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app'
         }),
         angular2_1.View({
-            template: '<h1>Hello {{ word }}!!</h1>'
+            template: 'Hello <input type="text" value="{{ word }}" (keyup)="myControllerMethod()" >!!'
         }), 
         __metadata('design:paramtypes', [])
     ], MyAppComponent);
