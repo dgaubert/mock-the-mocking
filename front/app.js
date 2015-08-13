@@ -14,7 +14,7 @@ var angular2_1 = require('angular2/angular2');
 // Annotation section
 var MyAppComponent = (function () {
     function MyAppComponent() {
-        this.word = 'World';
+        this.word = 'there';
     }
     MyAppComponent = __decorate([
         angular2_1.Component({

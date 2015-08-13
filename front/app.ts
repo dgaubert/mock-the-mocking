@@ -13,7 +13,7 @@ class MyAppComponent {
     name: string;
 
     constructor() {
-        this.word = 'World';
+        this.word = 'there';
     }
 }
 bootstrap(MyAppComponent);
