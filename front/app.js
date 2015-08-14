@@ -12,22 +12,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /// <reference path="typings/angular2/angular2.d.ts" />
 var angular2_1 = require('angular2/angular2');
 // Annotation section
-var MyAppComponent = (function () {
-    function MyAppComponent() {
-        this.word = 'there';
+var MessageEditorComponent = (function () {
+    function MessageEditorComponent() {
+        this.customMessage = 'Edita este mensaje';
     }
-    MyAppComponent.prototype.myControllerMethod = function () {
-        console.log(this.word);
+    MessageEditorComponent.prototype.updateMessage = function (message) {
+        this.customMessage = message;
     };
-    MyAppComponent = __decorate([
+    MessageEditorComponent.prototype.getMessageReady = function () {
+        console.log('Give "' + this.customMessage + '" to the backend');
+        console.log('Bringing some sharing options');
+    };
+    MessageEditorComponent = __decorate([
         angular2_1.Component({
-            selector: 'my-app'
+            selector: 'message-editor'
         }),
         angular2_1.View({
-            template: 'Hello <input type="text" value="{{ word }}" (keyup)="myControllerMethod()" >!!'
+            template: '<input #message type="text" value="{{ customMessage }}" (blur)="updateMessage(message.value)" >' +
+                '<button (click)="getMessageReady()">Comparte</button>'
         }), 
         __metadata('design:paramtypes', [])
-    ], MyAppComponent);
-    return MyAppComponent;
+    ], MessageEditorComponent);
+    return MessageEditorComponent;
 })();
-angular2_1.bootstrap(MyAppComponent);
+// Annotation section
+var SinglePosterComponent = (function () {
+    function SinglePosterComponent() {
+    }
+    SinglePosterComponent = __decorate([
+        angular2_1.Component({
+            selector: 'single-poster'
+        }),
+        angular2_1.View({
+            template: '<h1>Single poster</h1>' +
+                '<message-editor></message-editor>',
+            directives: [MessageEditorComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], SinglePosterComponent);
+    return SinglePosterComponent;
+})();
+angular2_1.bootstrap(SinglePosterComponent);

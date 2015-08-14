@@ -1,22 +1,48 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
 import {Component, View, bootstrap} from 'angular2/angular2';
 
+
+
+
+
 // Annotation section
 @Component({
-    selector: 'my-app'
+    selector: 'message-editor'
 })
 @View({
-    template: 'Hello <input type="text" value="{{ word }}" (keyup)="myControllerMethod()" >!!'
+    template: '<input #message type="text" value="{{ customMessage }}" (blur)="updateMessage(message.value)" >' +
+    '<button (click)="getMessageReady()">Comparte</button>'
 })
 // Component controller
-class MyAppComponent {
-    name: string;
+class MessageEditorComponent {
+    customMessage: string;
 
     constructor() {
-        this.word = 'there';
+        this.customMessage = 'Edita este mensaje';
     }
-    myControllerMethod() {
-        console.log(this.word);
+    updateMessage(message) {
+        this.customMessage = message;
+    }
+    getMessageReady() {
+        console.log('Give "' + this.customMessage + '" to the backend');
+        console.log('Bringing some sharing options');
     }
 }
-bootstrap(MyAppComponent);
+
+// Annotation section
+@Component({
+    selector: 'single-poster'
+})
+@View({
+    template: '<h1>Single poster</h1>' +
+    '<message-editor></message-editor>',
+    directives: [MessageEditorComponent]
+})
+// Component controller
+class SinglePosterComponent {
+
+    constructor() {
+
+    }
+}
+bootstrap(SinglePosterComponent);
